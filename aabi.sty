@@ -60,10 +60,28 @@
 \RequirePackage{amssymb}
 \RequirePackage{natbib}
 \RequirePackage{graphicx}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{inconsolata}
 
 \if@usehyper
-  \RequirePackage[colorlinks=false,allbordercolors={1 1 1}]{hyperref}
+  \RequirePackage[
+    colorlinks=true,
+    citecolor=Blue,
+    linkcolor=Blue,
+    filecolor=Blue,
+    urlcolor=Blue
+  ]{hyperref}
 \fi
+
+\RequirePackage{booktabs}
+\RequirePackage[capitalise]{cleveref}
+
+\RequirePackage{authblk}
+\renewcommand\Authfont{\normalsize\bfseries}
+\renewcommand\Affilfont{\small\normalfont}
+\renewcommand\Authsep{\hspace{1em}}
+\renewcommand\Authand{\hspace{1em}}
+\renewcommand\Authands{\hspace{1em}}
 
 \if@abbrvbib
   \bibliographystyle{abbrvnat}
@@ -93,8 +111,7 @@
 %\topmargin 0 true pt           % Nominal distance from top of page to top of
 %\topmargin 0.125in
 \topmargin -0.5in
-\addtolength{\headsep}{0.25in}
-\textheight 8.5 true in       % Height of text (including footnotes & figures)
+\textheight 9.0 true in       % Height of text (including footnotes & figures)
 \textwidth 6.0 true in        % Width of text line.
 \widowpenalty=10000
 \clubpenalty=10000
@@ -211,9 +228,10 @@
 
 %% use \begin{abstract} .. \end{abstract} for abstracts.
 \renewenvironment{abstract}
-{\centerline{\large\bf Abstract}\vspace{0.7ex}%
+{\centerline{\large\bf Abstract}\vspace{0.5em}%
   \bgroup\leftskip 20pt\rightskip 20pt\small\noindent\ignorespaces}%
-{\par\egroup\vskip 3em}
+{\par\egroup\vskip 2em}%
+% {\par\egroup\vskip 1.5em\centerline{\rule{\textwidth}{0.4pt}}\vskip 1.5em}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                               KEYWORDS
@@ -290,20 +308,20 @@
 \def\aabiheading{\def\ps@jmlrtps{\let\@mkboth\@gobbletwo%
     \if@preprint
       \def\@oddhead{\vbox{\hbox to\textwidth{\footnotesize Submitted to the Proceedings of AABI 2026\hfill}\vskip 0.25em\hrule height0.5pt}}%
-      \def\@oddfoot{\hfill \small\rm \thepage \hfill}%
+      \def\@oddfoot{}%
     \else
       \def\@oddhead{\vbox{\hbox to\textwidth{\footnotesize \bf Published at the Proceedings of AABI 2026\hfill}\vskip 0.25em\hrule height0.5pt}}%
-      \def\@oddfoot{\hfill \small\rm \thepage \hfill}%
+      \def\@oddfoot{}%
     \fi
     \def\@evenhead{}\def\@evenfoot{}}%
   \thispagestyle{jmlrtps}}
 
 %% Defines the pagestyle for the rest of the pages
 \def\ShortHeadings#1{\def\ps@jmlrps{\let\@mkboth\@gobbletwo%
-    \def\@oddhead{\vbox{\hbox to\textwidth{\hfill {\small\bf #1} \hfill}\vskip 0.25em\hrule height0.5pt}}%
-    \def\@oddfoot{\hfill \small\rm \thepage \hfill}%
-    \def\@evenhead{\vbox{\hbox to\textwidth{\hfill {\small\bf #1} \hfill}\vskip 0.25em\hrule height0.5pt}}%
-    \def\@evenfoot{\hfill \small\rm \thepage \hfill}}%
+    \def\@oddhead{\vbox{\hbox to\textwidth{{\small\bf #1} \hfill \small\rm \thepage}\vskip 0.25em\hrule height0.5pt}}%
+    \def\@oddfoot{}%
+    \def\@evenhead{\vbox{\hbox to\textwidth{{\small\bf #1} \hfill \small\rm \thepage}\vskip 0.25em\hrule height0.5pt}}%
+    \def\@evenfoot{}}%
   \pagestyle{jmlrps}}
 
 
@@ -311,15 +329,20 @@
 %                               MISCELLANY
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+% Text
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5\baselineskip plus 0.2\baselineskip minus 0.1\baselineskip}
+
 % Define macros for figure captions and table titles
 
 % Figurecaption prints the caption title flush left.
-% \def\figurecaption#1#2{\noindent\hangindent 42pt
-%                        \hbox to 36pt {\sl #1 \hfil}
-%                        \ignorespaces #2}
-% \def\figurecaption#1#2{\noindent\hangindent 46pt
-%                        \hbox to 41pt {\small\sl #1 \hfil}
-%                        \ignorespaces {\small #2}}
+\def\figurecaption#1#2{\noindent\hangindent 42pt
+  \hbox to 36pt {\sl #1 \hfil}
+  \ignorespaces #2}
+\def\figurecaption#1#2{\noindent\hangindent 46pt
+  \hbox to 41pt {\small\sl #1 \hfil}
+  \ignorespaces {\small #2}}
 \def\figurecaption#1#2{\noindent\hangindent 40pt
   \hbox to 36pt {\small\sl #1 \hfil}
   \ignorespaces {\small #2}}
@@ -327,22 +350,38 @@
 \def\figurecenter#1#2{\centerline{{\sl #1} #2}}
 \def\figurecenter#1#2{\centerline{{\small\sl #1} {\small #2}}}
 
-%
-%  Allow ``hanging indents'' in long captions
-%
-\long\def\@makecaption#1#2{
-  \vskip 10pt
-  \setbox\@tempboxa\hbox{#1: #2}
-  \ifdim \wd\@tempboxa >\hsize               % IF longer than one line:
-    \begin{list}{#1:}{
-        \settowidth{\labelwidth}{#1:}
-        \setlength{\leftmargin}{\labelwidth}
-        \addtolength{\leftmargin}{\labelsep}
-      }\item #2 \end{list}\par   % Output in quote mode
-  \else                                    %   ELSE  center.
-    \hbox to\hsize{\hfil\box\@tempboxa\hfil}
-  \fi}
+% \long\def\@makecaption#1#2{
+%   \vskip 1em
+%   \setbox\@tempboxa\hbox{\small {\bf #1.} #2}
+%   \ifdim \wd\@tempboxa >\hsize               % IF longer than one line:
+%     {\small {\bf #1.} #2}
+%   \else                                    %   ELSE  center.
+%     \hbox to\hsize{\hfil\box\@tempboxa\hfil}
+%   \fi}
 
+\long\def\@makecaption#1#2{%
+  \def\@tempa{table}%
+  \ifx\@captype\@tempa
+    % Table caption: space above and below
+    \vskip 0.5em
+    \setbox\@tempboxa\hbox{\small {\bf #1.} #2}
+    \ifdim \wd\@tempboxa >\hsize
+      {\small {\bf #1.} #2}
+    \else
+      \hbox to\hsize{\hfil\box\@tempboxa\hfil}
+    \fi
+    \vskip 1em
+  \else
+    % Figure caption: space above only
+    \vskip 1em
+    \setbox\@tempboxa\hbox{\small {\bf #1.} #2}
+    \ifdim \wd\@tempboxa >\hsize
+      {\small {\bf #1.} #2}
+    \else
+      \hbox to\hsize{\hfil\box\@tempboxa\hfil}
+    \fi
+  \fi
+}
 
 % Define strut macros for skipping spaces above and below text in a
 % tabular environment.

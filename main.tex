@@ -3,28 +3,10 @@
 \usepackage{aabi}
 % \usepackage[preprint]{aabi}
 
+\usepackage{blindtext}
+\usepackage{wrapfig}
+
 \input{math_commands.tex} % Custom math commands
-
-\usepackage{booktabs}
-\usepackage[capitalise]{cleveref}
-
-\usepackage{authblk}
-\renewcommand\Authfont{\normalsize\bfseries}
-\renewcommand\Affilfont{\small\normalfont}
-\renewcommand\Authsep{\hspace{1em}}
-\renewcommand\Authand{\hspace{1em}}
-\renewcommand\Authands{\hspace{1em}}
-
-\usepackage[dvipsnames]{xcolor}
-\usepackage{inconsolata}
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    citecolor=Blue,
-    linkcolor=Blue,
-    filecolor=Blue,
-    urlcolor=Blue,
-}
 
 \aabiheading{}
 \ShortHeadings{AABI Style Guide}
@@ -36,61 +18,50 @@
   Advances in Approximate Bayesian Inference\\\LaTeX{} Style Guide
 }
 
-\author[1,$*$]{First Author}
+\author[1,$*$,$\dagger$]{First Author}
 \author[1,2,$*$]{Second Author}
 \author[2]{Third Author}
 
 \affil[1]{Affiliation 1}
 \affil[2]{Affiliation 2}
 \affil[$*$]{Equal contribution}
+\affil[$\dagger$]{Correspondence to \url{email@example.com}}
 
 \maketitle
 
 
 \begin{abstract}
-  Papers to be submitted to NeurIPS 2025 must be prepared according to the
-  instructions presented here. Papers may only be up to {\bf nine} pages long,
-  including figures.
-  % Additional pages \emph{containing only acknowledgments and references} are allowed.
-  Additional pages \emph{containing references, checklist, and the optional technical appendices} do not count as content pages.
-  Papers that exceed the page limit will not be
-  reviewed, or in any other way considered for presentation at the conference.
+  \blindtext
+  \blindtext
 \end{abstract}
 
 
 \section{Introduction}
 \label{sec:intro}
 
-This is a sample article that uses the \textsf{jmlr} class with
-the \texttt{wcp} class option.  Please follow the guidelines in
-this sample document as it can help to reduce complications when
-combining the articles into a book. Please avoid using obsolete
-commands, such as \verb|\rm|, and obsolete packages, such as
-\textsf{epsfig}.\footnote{See
-  \url{http://www.ctan.org/pkg/l2tabu}} Some packages that are known
-to cause problems for the production editing process are checked for
-by the \textsf{jmlr} class and will generate an error. (If you want
-to know more about the production editing process, have a look at
-the video tutorials for the production editors at
-\url{http://www.dickimaw-books.com/software/makejmlrbookgui/videos/}.)
+\blindmathpaper
 
-Please also ensure that your document will compile with PDF\LaTeX.
-If you have an error message that's puzzling you, first check for it
-at the UK TUG FAQ
-\url{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=man-latex}.  If
-that doesn't help, create a minimal working example (see
-\url{http://theoval.cmp.uea.ac.uk/~nlct/latex/minexample/}) and post
-to somewhere like \TeX\ on StackExchange
-(\url{http://tex.stackexchange.com/}) or the \LaTeX\ Community Forum
-(\url{http://www.latex-community.org/forum/}).
+\blindtext
+
 
 \subsection{Sub-sections}
 
 Sub-sections are produced using \verb|\subsection|.
+\blindtext
 
 \subsubsection{Sub-sub-sections}
 
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \centering
+
+  \includegraphics[width=0.35\textwidth]{images/nodes}
+
+  \caption{Wrapped Figure Example}
+  \label{fig:wrap-example}
+\end{wrapfigure}
+
 Sub-sub-sections are produced using \verb|\subsubsection|.
+\blindtext
 
 \paragraph{Sub-sub-sub-sections}
 
@@ -101,6 +72,24 @@ These are unnumbered with a running head.
 
 Sub-sub-sub-sub-sections are produced using \verb|\subparagraph|.
 These are unnumbered with a running head.
+
+
+\subsection{Figures}
+\label{sec:figures}
+
+Figures should go in the \texttt{figure} environment.
+If you want to scale the
+image, it's better to use a fraction of the line width rather
+than an explicit length. For example, see \cref{fig:nodes}.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.5\linewidth]{images/nodes}
+  % \caption{Example Image asdasdsada dsad a sdasdasd asjdhaksjdh kajshkjdhajsk hdkjashdjkahs jkdhasjkdh akjshdkjas hdkjash dkjashdkj ahs kdjhaskdjaskd hkjasha}
+  \caption{Example Image}
+  \label{fig:nodes}
+\end{figure}
+
 
 \section{Cross-Referencing}
 
@@ -607,6 +596,66 @@ to display the proof if need be, as in \cref{thm:eigenpow}.
     $n$.
   \end{proof}
 \end{theorem}
+
+
+\subsection{Full-Width Tables}
+\label{sec:fullwidth-tables}
+
+For tables that need to span the full width of the page or contain many columns, you can use the \texttt{table*} environment. Here's an example using booktabs for professional formatting:
+
+\begin{table*}[t]
+  \centering
+
+  \caption{Full-Width Table Example: Performance Comparison Across Different Methods}
+  \label{tab:fullwidth-example}
+
+  \begin{tabular}{lccccc}
+    \toprule
+    \textbf{Method}   & \textbf{Dataset 1} & \textbf{Dataset 2} & \textbf{Dataset 3} & \textbf{Dataset 4} & \textbf{Runtime (s)} \\
+    \midrule
+    Baseline Method   & 0.823              & 0.756              & 0.734              & 0.812              & 125.4                \\
+    Improved Method A & 0.847              & 0.789              & 0.768              & 0.834              & 98.7                 \\
+    Improved Method B & 0.856              & 0.801              & 0.782              & 0.845              & 87.3                 \\
+    Our Method        & \textbf{0.871}     & \textbf{0.823}     & \textbf{0.796}     & \textbf{0.862}     & \textbf{73.2}        \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+
+
+\subsection{Wrapped Tables}
+\label{sec:wrapped-tables}
+
+Sometimes you want a table to be embedded within the text flow. The \texttt{wraptable} environment allows text to wrap around the table.
+
+\begin{wraptable}{r}{0.45\textwidth}
+  \vspace{-2em}
+
+  \centering
+  \caption{Summary Results}
+  \label{tab:wrap-example}
+
+  \begin{tabular}{lcc}
+    \toprule
+    \textbf{Method} & \textbf{Accuracy} & \textbf{Time}  \\
+    \midrule
+    Method A        & 85.3\%            & 12.4s          \\
+    Method B        & 87.1\%            & 15.7s          \\
+    Our Method      & \textbf{89.6\%}   & \textbf{10.2s} \\
+    \bottomrule
+  \end{tabular}
+\end{wraptable}
+
+This paragraph demonstrates how text flows around the wrapped table. The table appears on the right side of the text, and the content naturally wraps around it. This is particularly useful for smaller tables that contain summary information or key results that you want to highlight without breaking the flow of the main text.
+
+You can position the table on the left using \verb|{l}| or on the right using \verb|{r}| as the first parameter to \texttt{wraptable}. The second parameter controls the width allocated to the table.
+
+The wrapped table maintains proper spacing and formatting while allowing the text to flow naturally. This technique is especially effective in documents where you want to present data without interrupting the narrative flow. Notice how this paragraph continues to wrap around the table, demonstrating the natural text flow that can be achieved with this approach.
+
+\blindtext[1]
+
+The \texttt{table*} environment is ideal for comprehensive comparison tables, while \texttt{wraptable} works well for smaller summary tables that complement the surrounding text.
+`
 
 
 \section{Citations and Bibliography}
