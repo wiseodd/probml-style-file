@@ -231,7 +231,7 @@
 %% use \begin{abstract} .. \end{abstract} for abstracts.
 \renewenvironment{abstract}
 {\centerline{\large\bf Abstract}\vspace{0.5em}%
-  \bgroup\leftskip 20pt\rightskip 20pt\small\noindent\ignorespaces}%
+  \bgroup\leftskip 20pt\rightskip 20pt\normalsize\noindent\ignorespaces}%
 {\par\egroup\vskip 2em}%
 % {\par\egroup\vskip 1.5em\centerline{\rule{\textwidth}{0.4pt}}\vskip 1.5em}%
 
@@ -288,7 +288,7 @@
 % \def\@endeditor{\normalsize}
 \def\@maketitle{\vbox{\hsize\textwidth
     \linewidth\hsize \vskip \beforetitskip
-    {\begin{center} \Large\bf \@title \par \end{center}} \vskip \aftertitskip
+    {\begin{center} \LARGE\bf \@title \par \end{center}} \vskip \aftertitskip
     {\def\and{\quad}%
       \def\name{\normalsize\bf}%
       \begin{center}
@@ -309,10 +309,10 @@
 
 \def\aabiheading{\def\ps@jmlrtps{\let\@mkboth\@gobbletwo%
     \if@preprint
-      \def\@oddhead{\vbox{\hbox to\textwidth{\footnotesize Submitted to the Proceedings of AABI 2026\hfill}\vskip 0.25em\hrule height0.5pt}}%
+      \def\@oddhead{\vbox{\hbox to\textwidth{\small Submitted to the Proceedings of AABI 2026\hfill}\vskip 0.25em\hrule height0.5pt}}%
       \def\@oddfoot{}%
     \else
-      \def\@oddhead{\vbox{\hbox to\textwidth{\footnotesize \bf Published at the Proceedings of AABI 2026\hfill}\vskip 0.25em\hrule height0.5pt}}%
+      \def\@oddhead{\vbox{\hbox to\textwidth{\small \bf Published at the Proceedings of AABI 2026\hfill}\vskip 0.25em\hrule height0.5pt}}%
       \def\@oddfoot{}%
     \fi
     \def\@evenhead{}\def\@evenfoot{}}%
