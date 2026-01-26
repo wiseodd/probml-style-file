@@ -1,21 +1,32 @@
 \documentclass[letterpaper,10pt]{article}
 
-\usepackage{aabi}
-% \usepackage[preprint]{aabi}
+%% ------------------------------------------------------------
+%% ProbML package
+%% ------------------------------------------------------------
+
+%% Blind submission
+\usepackage[submission]{probml}
+
+%% For ArXiv, etc.
+% \usepackage[preprint]{probml}
+
+%% Accepted, camera-ready
+% \usepackage{probml}
+
+\ShortHeadings{ProbML Style Guide}
+%% ------------------------------------------------------------
 
 \usepackage{blindtext}
 \usepackage{wrapfig}
 
 \input{math_commands.tex} % Custom math commands
 
-\aabiheading{}
-\ShortHeadings{AABI Style Guide}
-\firstpageno{1}
 
 \begin{document}
 
 \title{
-  Advances in Approximate Bayesian Inference\\\LaTeX{} Style Guide
+  Symposium on Probabilistic Machine Learning \\
+  \LaTeX{} Style Guide
 }
 
 \author[1,$*$,$\dagger$]{First Author}
@@ -684,7 +695,6 @@ The bibliography is displayed using \verb|\bibliography|.
 
 \bibliography{references}
 
-
 \clearpage
 
 \appendix
@@ -696,6 +706,5 @@ This is the first appendix.
 \section{Second Appendix}\label{apd:second}
 
 This is the second appendix.
-
 
 \end{document}
