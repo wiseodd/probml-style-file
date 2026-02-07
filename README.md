@@ -1,3 +1,3 @@
-# AABI style file
+# ProbML style file
 
-LaTeX style file for the Advances in Approximate Bayesian Inference.
+LaTeX style file for the Symposium on [Probabilistic Machine Learning (ProbML)](https://probml.cc).
