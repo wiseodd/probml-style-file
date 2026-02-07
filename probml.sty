@@ -246,7 +246,7 @@
 {\centerline{\large\bf Abstract}\vspace{0.5em}%
   \bgroup\leftskip 20pt\rightskip 20pt\normalsize\noindent\ignorespaces}%
 % {\par\egroup\vskip 2em}%
-{\par\egroup\vskip 1.5em\centerline{\rule{\textwidth}{0.5pt}}\vskip 1.5em}%
+{\par\egroup\vskip 0.5cm\centerline{\rule{\textwidth}{0.5pt}}\vskip 0.5cm}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                               KEYWORDS
@@ -268,7 +268,7 @@
 
 %% Changeable parameters.
 \setlength\aftertitskip{0.1in plus 0.2in minus 0.2in}
-\setlength\beforetitskip{0.05in plus 0.08in minus 0.08in}
+\setlength\beforetitskip{0.5cm plus 0.08in minus 0.08in}
 \setlength\interauthorskip{0.08in plus 0.1in minus 0.1in}
 \setlength\aftermaketitskip{0.3in plus 0.1in minus 0.1in}
 
@@ -308,13 +308,13 @@
 
 \def\probmlheading{\def\ps@jmlrtps{\let\@mkboth\@gobbletwo%
     \if@submission
-      \def\@oddhead{\vbox{\hbox to\textwidth{\small \bf Submitted to ProbML 2026\hfill}\vskip 0.25em\hrule height0.5pt}}%
+      \def\@oddhead{\vbox{\hbox to\textwidth{\small \bf Submitted to ProbML 2026\hfill}\vskip 0.25em\hrule height0.5pt\vskip -0.3in}}%
       \def\@oddfoot{}%
     \else\if@preprint
-        \def\@oddhead{\vbox{\hbox to\textwidth{}\vskip 0.75em\hrule height0.5pt}}%
+        \def\@oddhead{\vbox{\hbox to\textwidth{}\vskip 0.75em\hrule height0.5pt\vskip -0.3in}}%
         \def\@oddfoot{}%
       \else
-        \def\@oddhead{\vbox{\hbox to\textwidth{\small \bf Published at ProbML 2026\hfill}\vskip 0.25em\hrule height0.5pt}}%
+        \def\@oddhead{\vbox{\hbox to\textwidth{\small \bf Published at ProbML 2026\hfill}\vskip 0.25em\hrule height0.5pt\vskip -0.3in}}%
         \def\@oddfoot{}%
       \fi\fi
     \def\@evenhead{}\def\@evenfoot{}}%
@@ -423,4 +423,8 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{axiom}[theorem]{Axiom}
+
+
+
+
 
