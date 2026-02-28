@@ -101,8 +101,10 @@
 \bibpunct{(}{)}{;}{a}{,}{,}
 
 \RequirePackage[title,titletoc]{appendix}
-\crefname{section}{Appendix}{Appendices}
-\Crefname{section}{Appendix}{Appendices}
+\AddToHook{cmd/appendix/before}{%
+  \crefalias{section}{appendix}%
+  \crefalias{subsection}{appendix}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                             P A G E   S I Z E
@@ -194,7 +196,7 @@
 
 \def\@sect#1#2#3#4#5#6[#7]#8{\ifnum #2>\c@secnumdepth
     \def\@svsec{}\else
-    \refstepcounter{#1}\edef\@svsec{\csname the#1\endcsname\hskip 0.5em }\fi
+    \refstepcounter{#1}\edef\@svsec{\csname the#1\endcsname.\hskip 0.5em }\fi
   \@tempskipa #5\relax
   \ifdim \@tempskipa>\z@
     \begingroup #6\relax
@@ -213,15 +215,15 @@
 
 \def\thesection {\arabic{section}}
 \def\thesubsection {\thesection.\arabic{subsection}}
-\def\section{\@startsiction{section}{1}{\z@}{-0.24in}{0.10in}
+\def\section{\@startsection{section}{1}{\z@}{-0.24in}{0.10in}
   {\large\bf\raggedright}}
 \def\subsection{\@startsection{subsection}{2}{\z@}{-0.20in}{0.08in}
   {\normalsize\bf\raggedright}}
 \def\subsubsection{\@startsection{subsubsection}{3}{\z@}{-0.18in}{0.08in}
   {\normalsize\sc\raggedright}}
-\def\paragraph{\@startsiction{paragraph}{4}{\z@}{1.5ex plus
+\def\paragraph{\@startsection{paragraph}{4}{\z@}{1.5ex plus
     0.5ex minus .2ex}{-1em}{\normalsize\bf}}
-\def\subparagraph{\@startsiction{subparagraph}{5}{\z@}{1.5ex plus
+\def\subparagraph{\@startsection{subparagraph}{5}{\z@}{1.5ex plus
     0.5ex minus .2ex}{-1em}{\normalsize\bf}}
 
 
