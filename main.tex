@@ -610,6 +610,18 @@ to display the proof if need be, as in \cref{thm:eigenpow}.
 \end{theorem}
 
 
+\begin{definition} \label{def:set}
+  The set $A$ has three members: $a$, $b$, and $c$.
+\end{definition}
+
+
+\begin{proposition} \label{prop:set}
+  The set $A$ has three members: $a$, $b$, and $c$.
+\end{proposition}
+
+Citing the definition: \cref{def:set}. Also, \cref{prop:set}.
+
+
 \subsection{Full-Width Tables}
 \label{sec:fullwidth-tables}
 
@@ -638,8 +650,6 @@ For tables that need to span the full width of the page or contain many columns,
 \subsection{Wrapped Tables}
 \label{sec:wrapped-tables}
 
-Sometimes you want a table to be embedded within the text flow. The \texttt{wraptable} environment allows text to wrap around the table.
-
 \begin{wraptable}{r}{0.45\textwidth}
   \vspace{-2em}
 
@@ -657,6 +667,8 @@ Sometimes you want a table to be embedded within the text flow. The \texttt{wrap
     \bottomrule
   \end{tabular}
 \end{wraptable}
+
+Sometimes you want a table to be embedded within the text flow. The \texttt{wraptable} environment allows text to wrap around the table.
 
 This paragraph demonstrates how text flows around the wrapped table. The table appears on the right side of the text, and the content naturally wraps around it. This is particularly useful for smaller tables that contain summary information or key results that you want to highlight without breaking the flow of the main text.
 
@@ -692,7 +704,10 @@ The bibliography is displayed using \verb|\bibliography|.
 
 \clearpage
 
-\acks{Acknowledgements go here.}
+\section*{Acknowledgements}
+
+Acknowledgements go here.
+Please comment this section for the double-blind submission.
 
 \bibliography{references}
 
