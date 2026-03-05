@@ -574,8 +574,8 @@ See the \textsf{amsmath} documentation for further details.
 The following theorem-like environments are predefined by
 the \textsf{jmlr} class: \texttt{theorem}, \texttt{example},
 \texttt{lemma}, \texttt{proposition}, \texttt{remark},
-\texttt{corollary}, \texttt{definition}, \texttt{conjecture}
-and \texttt{axiom}. You can use the \texttt{proof} environment
+\texttt{corollary}, \texttt{definition}.
+You can use the \texttt{proof} environment
 to display the proof if need be, as in \cref{thm:eigenpow}.
 
 \begin{theorem}[Eigenvalue Powers]\label{thm:eigenpow}
@@ -619,7 +619,11 @@ to display the proof if need be, as in \cref{thm:eigenpow}.
   The set $A$ has three members: $a$, $b$, and $c$.
 \end{proposition}
 
-Citing the definition: \cref{def:set}. Also, \cref{prop:set}.
+\begin{corollary} \label{cor:set}
+  The set $A$ has three members: $a$, $b$, and $c$.
+\end{corollary}
+
+Citing the definition: \cref{def:set}. Also, \cref{prop:set}. \Cref{cor:set} is another one.
 
 
 \subsection{Full-Width Tables}
